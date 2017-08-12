@@ -1,0 +1,172 @@
+docker run --rm -it --name ucp   -v /var/run/docker.sock:/var/run/docker.sock   docker/ucp install -i --swarm-port 3376 --controller-port 4443
+sudo docker ps -l  // show the last container to exit
+sudo docker run -d   --name cmodcontfinal2  -p 80:80 cmod  tail -f /dev/null
+sudo docker build -t cmodtail  . //create a docker image named cmodtail from the docker file in 				 //the current directory
+sudo docker build-t="nimalimage/web:v1" github.com/turnbullpress/docker-static_web   //create a docker image named nimalimage/web:v1 from the docker 											     //file in the git repo specifed
+sudo docker exec -ti nimalkrishna  /bin/sh
+docker pull nachinius/c-dev
+sudo docker run -it --rm -e HOSTNAMEs=nimal  -e container=10.20.30  --name primeodd  pr1    // go in the interactive exec and type env to see the environment variables
+sudo docker run -it --rm --name cbasic cbasicimage tail -f /dev/null
+sudo docker-machine create --driver virtualbox worker1
+sudo docker-machine env worker1
+sudo docker-machine create --driver virtualbox worker2
+sudo docker node ls   #list the nodes in a swarm
+sudo docker swarm join-token worker
+docker swarm join-token manager
+docker-machine env manager1
+sudo docker-machine ls   // lists all available virtual machines
+sudo   docker-machine  ip m1   // prints the ip of the m1
+sudo docker-machine scp   // to copy files into and out of the virtual machine
+sudo docker-machine upgare  // upgrade the docker installed on the virtual machine to the latest version
+sudo docker-machine restart  // restart the docker machine
+sudo docker commit containername imagename  // creates an image from a container
+sudo docker logs reverent_sinoussi  // outputs the log file of a container
+sudo docker kill  zen_curie  // stops a running container
+sudo docker port containername  // outputs all the already exposed ports in a container
+cat /etc/timezone      //to check the timezone
+sudo docker-machine ssh worker1
+sudo docker  run --restart=on-failure:5 --name nimalcontrestart -d ubuntu /bin/sh 
+-c "while true;do echo hello-world;sleep 2;done"
+sudo docker rm -f `sudo docker ps -a -q`  // removes all containers
+sudo docker run -d -p 8080:80 --name nameofcontainer nginx -g "daemon off;"
+sudo docker run -d -p 127.0.0.1:80:80 --name nameofcontainer nginx -g "daemon off;"
+sudo docker-machine rm e1   // removes a virtual machine 
+
+
+
+networking
+
+1)sudo docker run --rm -ti -p 45678:45678 -p 45679:45679 --name networking ubuntu:14.04  bash
+ nc -lp 45678 | nc -lp 45679
+
+		in another termial
+		nc 192.168.99.101 45678
+
+		in another termial
+		nc 192.168.99.101 45679
+2) connect two containers directly
+
+sudo docker run --rm -ti  --name service ubuntu:14.04 bash
+nc -lp 1234
+		in another container
+		sudo docker run --rm -ti --link server --name client ubuntu:14.04 bash
+		nc server 1234
+
+3)using network instead of ip
+sudo docker network create net1
+sudo docker run --rm -ti  --name net1 --net=net1 ubuntu:14.04 bash
+ nc -lp 1234
+		in another terminal
+		sudo docker run --rm -ti   --name client --net=net1 ubuntu:14.04  bash
+		nc net1 1234
+
+
+bind address ex: 0.0.0.0
+		
+https://www.youtube.com/watch?v=m_vW-XS8ry4
+https://www.tixati.com/opti
+https://medium.com/lucjuggery/deploy-the-voting-apps-stack-on-a-docker-swarm-4390fd5eee4
+visuiser http://192.168.99.100:8080/
+voting http://192.168.99.102:5000/
+results http://192.168.99.102:5001/
+ucp https://192.168.99.102:4443
+----------------------------------------------------------------------------------
+t1
+https://192.168.99.102:4443   (home)
+------------------------------------------------------------------------------
+manager1
+https://192.168.2.12348:2377
+----------------------------------------------------------------------------
+adminusername: nk
+adminpassword: nimalkrishna
+-----------------------------------------------------------------------------------------------------------
+
+#AnaiGlobal$$
+crond
+
+
+dockerhub:
+username : nimalkrishna
+password : nimal#krishna7
+
+
+
+------------------------------------------------------------------------------------------------------------------
+coffeemanager2(manager)
+https://192.168.99.101
+
+
+Docker cloud 
+username : nimalkrishna
+password: nimal#krishna7
+export DOCKER_HOST=tcp://127.0.0.1:32768
+You can now access this cluster using the following command in any Docker Engine:
+	docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_HOST dockercloud/client nimalkrishna/teaswarm1copy
+
+
+------------------------------------------------------------------------------------
+----to push an image to the docker hub------------
+sudo docker tag 48b5124b2768 nimalkrishna/docker-learn
+sudo docker push nimalkrishna/docker-learn
+
+-----------------------VM Ware ---------------------------------
+docker run --rm -it --name ucp   -v /var/run/docker.sock:/var/run/docker.sock   docker/ucp install -i --swarm-port 3376 --controller-port 4443
+
+----------------Net working ---------------------------------------
+
+ifconfig
+route -n
+ns lookup <loop back addr>
+ping <addr>
+
+-----------------------VM Player---------------------------------
+ ucp  https://172.16.204.130.4443
+
+----------------AWS----------------------------------------------
+
+keypair name= nimal
+pass phrase : nimal
+Your public key has been saved in /home/nimal/.ssh/id_rsa.pub.
+
+
+arn:aws:iam::896441497549:role/dockercloud-swarm-role1
+
+file in which the ssh key to be stored is /home/nimal/.ssh/id_rsa
+
+
+
+
+ip for the hosts to connect to the rancher -  66.207.200.246
+ip to connect to the rancher ui 172.17.0.1:8080
+ip 192.168.2.90:8080
+
+Linode
+-------------
+password: nimal#krishna7
+ip:	45.33.54.147
+
+
+rancher
+---------------
+45.33.54.147:8080
+
+
+
+Rancher
+-------------------------
+key		 Access Key(user name): AF11A1B21C41E9DD2EEF
+		 Secret Key(password):  mfnps9HeRAxvmACAQkNR5mixuqXqegQj18ZvvuqM
+
+-------------------------------------
+pushing image to dockerhub
+
+ex:
+sudo docker build -t  nimalkrishna/moviedb .
+sudo docker push nimalkrishna/moviedb:latest
+
+
+
+
+
+
+
