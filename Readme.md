@@ -1,6 +1,3 @@
-This Repository basically contains some of the works i did as Dev-ops, basically on the staging/deployment using the Docker/ Rancher
-
-
 
 # About this repository
 
